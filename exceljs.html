@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel風</title>
+  <style>
+    body{
+      margin: 0px;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    th {
+      border: 1px solid grey;
+      padding: 3px 10px;
+      background: #ddd;
+      font-weight: bold;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      left: 0;
+    }
+    .item {
+      border: 1px solid grey;
+      padding: 3px 10px;
+      background: #ddd;
+      font-weight: bold;
+      text-align: center;
+    }
+    .value {
+      border: 1px solid grey;
+      padding: 3px 10px;
+      cursor: pointer;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+  </table>
+
+  <script>
+
+var header = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 
+              'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 
+              'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+var table = document.querySelector("table");
+
+//ヘッダー
+var row = table.insertRow(-1);
+var th0 = document.createElement("th");
+row.appendChild(th0);
+th0.innerHTML=" ";
+th0.width = 30;
+for(var i=0; i<header.length; i++){
+  var th = document.createElement("th");
+  row.appendChild(th);
+  th.innerHTML=header[i];
+  th.width = 100;
+}
+table.width = 30 + 100*header.length;
+
+for(var r=1; r<=50; r++){
+  var row = table.insertRow(-1);
+  var cell1 = document.createElement("th");
+  row.appendChild(cell1);
+  cell1.innerHTML = r;
+  for(c=1; c<=header.length; c++){
+    var cell = row.insertCell(-1);
+    cell.className = 'value';
+    cell.setAttribute('contenteditable','true');
+    cell.setAttribute('id','R'+r+'C'+c);
+    // cell.innerText = 'R'+r+'C'+c;
+  }
+} 
+
+var tr = table.querySelectorAll("tr");
+table.addEventListener("click", function(e) {
+  if(e.target.tagName.toLowerCase() === "td") {
+    //全て背景色白
+    for(var i = 0; i < tr.length; i++) {
+      tr[i].style.backgroundColor = "white";
+    }
+    e.target.parentNode.style.backgroundColor = "#eef";
+  }
+}, false);
+
+  </script>
+</body>
+</html>
