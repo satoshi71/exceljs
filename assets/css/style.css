@@ -1,0 +1,29 @@
+body{
+    margin: 0px;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    border: 1px solid grey;
+    padding: 3px 10px;
+    background: #ddd;
+    font-weight: bold;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+  .item {
+    border: 1px solid grey;
+    padding: 3px 10px;
+    background: #ddd;
+    font-weight: bold;
+    text-align: center;
+  }
+  .value {
+    border: 1px solid grey;
+    padding: 3px 10px;
+    cursor: pointer;
+    width: 100px;
+  }
